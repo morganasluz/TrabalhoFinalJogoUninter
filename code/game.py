@@ -1,13 +1,14 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import pygame
+
+from code.Const import WIN_WIDTH
 from code.menu import Menu
 
-
 class Game:
-    def __init__(self):
+    def __init__(self, WIN_HEIGHT=None):
         pygame.init()
-        self.window = pygame.display.set_mode(size=(600, 480))  # janela inicial
+        self.window = pygame.display.set_mode(size=(576, 324))  # janela inicial
 
     def run(self, ):
 
@@ -15,8 +16,3 @@ class Game:
             menu = Menu(self.window)
             menu.run()
             pass
-            #check for all events
-            #for event in pygame.event.get():
-                #if event.type == pygame.QUIT:
-                    #pygame.quit() #close window
-                    #quit() #end pygame
