@@ -1,11 +1,10 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import pygame
-from pygame.examples.grid import WINDOW_WIDTH
 from pygame.font import Font
 from pygame import Surface, Rect
 
-from code.Const import WIN_WIDTH, MENU_OPTION, COLOR_BLACK
+from const import WIN_WIDTH, MENU_OPTION, COLOR_BLACK
 
 
 class Menu:
