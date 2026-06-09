@@ -6,7 +6,7 @@ import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
 
-from const import COLOR_BLACK, WIN_WIDTH, WIND_HEIGHT, COLOR_WHITE
+from const import COLOR_BLACK, WIN_WIDTH, WIN_HEIGHT, COLOR_WHITE
 from entity import Entity
 from entityFactory import EntityFactory
 
@@ -18,6 +18,7 @@ class Level:
         self.game_mode = game_mode
         self.entity_list: list[Entity] = []
         self.entity_list.extend(EntityFactory.get_entity('Level1Bg'))
+        self.entity_list.append(EntityFactory.get_entity('Player1'))
         self.timeout = 20000
 
     def run(self):
@@ -36,8 +37,8 @@ class Level:
                     sys.exit()
 
             self.level_text(14, f'{self.name} - Timeout: {self.timeout / 1000 :.1f}s', COLOR_BLACK, (10, 5))
-            self.level_text(14, f'fps: {clock.get_fps() :.0f}', COLOR_WHITE, (10, WIND_HEIGHT - 35))
-            self.level_text(14, f'entidades: {len(self.entity_list)}', COLOR_WHITE, (10, WIND_HEIGHT - 20))
+            self.level_text(14, f'fps: {clock.get_fps() :.0f}', COLOR_WHITE, (10, WIN_HEIGHT - 35))
+            self.level_text(14, f'entidades: {len(self.entity_list)}', COLOR_WHITE, (10, WIN_HEIGHT - 20))
 
             pygame.display.flip()
 
