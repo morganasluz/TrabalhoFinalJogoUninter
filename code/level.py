@@ -8,7 +8,8 @@ from pygame import Surface, Rect
 from pygame.font import Font
 
 from EntityMediator import EntityMediator
-from const import COLOR_BLACK, WIN_WIDTH, WIN_HEIGHT, COLOR_WHITE, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME
+from const import COLOR_BLACK, WIN_WIDTH, WIN_HEIGHT, COLOR_WHITE, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME, COLOR_GREEN, \
+    COLOR_CYAN
 from enemy import Enemy
 from entity import Entity
 from entityFactory import EntityFactory
@@ -28,8 +29,6 @@ class Level:
         pygame.time.set_timer(EVENT_ENEMY, SPAWN_TIME)
         self.timeout = 20000
 
-
-
     def run(self):
         pygame.mixer_music.load(f'./asset/Level1.mp3')
         pygame.mixer_music.play(-1)
@@ -42,14 +41,16 @@ class Level:
                 ent.move()
                 if isinstance(ent, (Player, Enemy)):
                     shoot = ent.shoot()
-                    if shoot  is not None:
+                    if shoot is not None:
                         self.entity_list.append(shoot)
-
+                if ent.name == 'Player1':
+                    self.level_text(14, f'Player1 - Health: {ent.health} | Score:{ent.score}', COLOR_GREEN, (10, 25))
+                if ent.name == 'Player2':
+                    self.level_text(14, f'Player1 - Health: {ent.health} | Score:{ent.score}', COLOR_CYAN, (10, 45))
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
-
                 if event.type == EVENT_ENEMY:
                     choice = random.choice(('Enemy1', 'Enemy2'))
                     self.entity_list.append(EntityFactory.get_entity(choice))
@@ -60,10 +61,9 @@ class Level:
 
             pygame.display.flip()
 
-            #colisões
+            # colisões
             EntityMediator.verify_collision(entity_list=self.entity_list)
             EntityMediator.verify_health(entity_list=self.entity_list)
-
 
         pass
 
