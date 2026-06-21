@@ -4,7 +4,7 @@ import pygame
 from pygame.font import Font
 from pygame import Surface, Rect
 
-from const import WIN_WIDTH, MENU_OPTION, COLOR_BLACK
+from code.const import WIN_WIDTH, MENU_OPTION, COLOR_BLACK
 
 
 class Menu:
@@ -23,6 +23,11 @@ class Menu:
             self.window.blit(source=self.surf, dest=self.rect)
             self.menu_text("Winter", 65, (138, 43, 226), ((WIN_WIDTH / 2), 70))
             self.menu_text("Combat", 65, (138, 43, 226), ((WIN_WIDTH / 2), 130))
+
+            self.menu_text("Use as setas para se mover", 20, (COLOR_BLACK), ((WIN_WIDTH / 2), 160))
+            self.menu_text("CTRL - atira", 20, (COLOR_BLACK), ((WIN_WIDTH / 2), 180))
+
+
 
             for i in range(len(MENU_OPTION)):
                 if i == menu_option:
