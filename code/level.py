@@ -7,13 +7,13 @@ import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
 
-from EntityMediator import EntityMediator
-from const import COLOR_BLACK, WIN_WIDTH, WIN_HEIGHT, COLOR_WHITE, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME, COLOR_GREEN, \
+from code.EntityMediator import EntityMediator
+from code.const import COLOR_BLACK, WIN_WIDTH, WIN_HEIGHT, COLOR_WHITE, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME, COLOR_GREEN, \
     COLOR_CYAN
-from enemy import Enemy
-from entity import Entity
-from entityFactory import EntityFactory
-from player import Player
+from code.enemy import Enemy
+from code.entity import Entity
+from code.entityFactory import EntityFactory
+from code.player import Player
 
 
 class Level:

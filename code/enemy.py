@@ -1,8 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from EnemyShot import EnemyShot
+from code.EnemyShot import EnemyShot
 from code.entity import Entity
-from const import ENTITY_SPEED, WIN_WIDTH, ENTITY_SHOT_DELAY
+from code.const import ENTITY_SPEED, WIN_WIDTH, ENTITY_SHOT_DELAY
 
 
 class Enemy(Entity):

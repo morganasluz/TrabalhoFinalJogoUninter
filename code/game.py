@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 import pygame
 
-from const import WIN_WIDTH, MENU_OPTION
-from level import Level
-from menu import Menu
+from code.const import WIN_WIDTH, MENU_OPTION
+from code.level import Level
+from code.menu import Menu
 
 class Game:
     def __init__(self, WIN_HEIGHT=None):

@@ -4,9 +4,9 @@ import random
 
 from code import background
 from code.background import Background
-from const import WIN_WIDTH, WIN_HEIGHT
-from enemy import Enemy
-from player import Player
+from code.const import WIN_WIDTH, WIN_HEIGHT
+from code.enemy import Enemy
+from code.player import Player
 
 
 class EntityFactory:
