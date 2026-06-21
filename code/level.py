@@ -17,7 +17,7 @@ from code.player import Player
 
 
 class Level:
-    def __init__(self, window, name, game_mode):
+    def __init__(self, window, name, game_mode, player_score):
         self.window = window
         self.name = name
         self.game_mode = game_mode
