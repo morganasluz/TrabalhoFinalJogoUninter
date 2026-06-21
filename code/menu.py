@@ -24,6 +24,11 @@ class Menu:
             self.menu_text("Winter", 65, (138, 43, 226), ((WIN_WIDTH / 2), 70))
             self.menu_text("Combat", 65, (138, 43, 226), ((WIN_WIDTH / 2), 130))
 
+            self.menu_text("Use as setas para se mover", 20, (COLOR_BLACK), ((WIN_WIDTH / 2), 160))
+            self.menu_text("CTRL - atira", 20, (COLOR_BLACK), ((WIN_WIDTH / 2), 180))
+
+
+
             for i in range(len(MENU_OPTION)):
                 if i == menu_option:
                     self.menu_text(MENU_OPTION[i], 20, (255, 255, 0), ((WIN_WIDTH / 2), 200 + 25 * i))
