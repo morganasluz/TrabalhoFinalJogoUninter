@@ -22,7 +22,7 @@ class Level:
         self.name = name
         self.game_mode = game_mode
         self.entity_list: list[Entity] = []
-        self.entity_list.extend(EntityFactory.get_entity('Level1Bg'))
+        self.entity_list.extend(EntityFactory.get_entity(f'{self.name}Bg'))
         self.entity_list.append(EntityFactory.get_entity('Player1'))
         if game_mode in [MENU_OPTION[1], MENU_OPTION[2]]:
             self.entity_list.append(EntityFactory.get_entity('Player2'))
@@ -30,12 +30,13 @@ class Level:
         self.timeout = 20000
 
     def run(self):
-        pygame.mixer_music.load(f'./asset/Level1.mp3')
+        pygame.mixer_music.load(f'./asset/{self.name}.mp3')
         pygame.mixer_music.play(-1)
         clock = pygame.time.Clock()
 
         while True:
-            clock.tick(60)
+            dt = clock.tick(60)
+            self.timeout -= dt
             for ent in self.entity_list:
                 self.window.blit(source=ent.surf, dest=ent.rect)
                 ent.move()
@@ -65,7 +66,9 @@ class Level:
             EntityMediator.verify_collision(entity_list=self.entity_list)
             EntityMediator.verify_health(entity_list=self.entity_list)
 
-        pass
+            if self.timeout <= 0:
+                self.timeout = 0
+                return True
 
     def level_text(self, text_size: int, text: str, text_color: tuple, text_pos: tuple):
         text_font: Font = pygame.font.SysFont('Georgia', size=text_size)

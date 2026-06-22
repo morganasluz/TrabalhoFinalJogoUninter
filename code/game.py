@@ -12,21 +12,27 @@ class Game:
         pygame.init()
         self.window = pygame.display.set_mode(size=(576, 324))  # janela inicial
 
-    def run(self, ):
+    def run(self):
         while True:
             score = Score(self.window)
             menu = Menu(self.window)
             menu_return = menu.run()
 
-            if menu_return in [MENU_OPTION[0],MENU_OPTION[1],MENU_OPTION[2]]:
+            if menu_return in [MENU_OPTION[0], MENU_OPTION[1], MENU_OPTION[2]]:
                 player_score = [0, 0]
-                level = Level(self.window, 'Level1', menu_return, player_score)
-                level_return = level.run()
-                if level_return:
-                    level = Level(self.window, 'Level2', menu_return, player_score)
-                    level_return = level.run(player_score)
-                    if level_retur:
-                        score.save(menu_return, player_score)
+
+                levels = ['Level1', 'Level2']
+
+                for level_name in levels:
+                    level = Level(self.window, level_name, menu_return, player_score)
+                    level_return = level.run()
+
+                    if not level_return:
+                        break
+
+                score.save(menu_return, player_score)
+
+
 
 
             elif menu_return == MENU_OPTION[3]:
@@ -37,5 +43,7 @@ class Game:
                 quit() #fim de jogo
             else:
                 pass
+
+
 
 
